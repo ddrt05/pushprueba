@@ -5,7 +5,7 @@ FROM node:${NODE_VERSION}-alpine AS node
 
 FROM alpine:${ALPINE_VERSION}
 
-RUN mkdir /app
+RUN mkdir -p /app && chown -R node:node /app
 WORKDIR /app
 
 RUN npm install
