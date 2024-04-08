@@ -16,9 +16,6 @@ WORKDIR /usr/local/app
 
 COPY package*.json ./
 
-
-USER node
-
 RUN npm install
 
 COPY . .
