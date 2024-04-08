@@ -17,11 +17,9 @@ WORKDIR /usr/local/app
 COPY package*.json ./
 
 
-RUN node -v
+USER node
 
-RUN npm install -g yarn --force
-
-RUN yarn -v
+RUN npm install
 
 COPY . .
 
