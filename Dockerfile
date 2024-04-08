@@ -10,13 +10,11 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+RUN mkdir -p /usr/local/app
 
-WORKDIR /home/node/app
+WORKDIR /usr/local/app
 
 COPY package*.json ./
-
-USER node
 
 
 RUN node -v
