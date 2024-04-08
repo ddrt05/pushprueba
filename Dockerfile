@@ -5,17 +5,17 @@ FROM node:${NODE_VERSION}-alpine AS node
 
 FROM alpine:${ALPINE_VERSION}
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+COPY --from=node /usr/lib /usr/lib
+COPY --from=node /usr/local/lib /usr/local/lib
+COPY --from=node /usr/local/include /usr/local/include
+COPY --from=node /usr/local/bin /usr/local/bin
 
-WORKDIR /home/node/app
+RUN node -v
 
-COPY package*.json ./
+RUN npm install -g yarn --force
 
-USER node
+RUN yarn -v
 
-RUN npm install
-
-COPY --chown=node:node . .
 
 EXPOSE 3000
 
