@@ -19,4 +19,4 @@ RUN yarn -v
 
 EXPOSE 3000
 
-CMD [ "node", "src/index.js" ]
+CMD [ "node", "/home/node/app/src/index.js" ]
